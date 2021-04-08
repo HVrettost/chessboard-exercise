@@ -5,6 +5,9 @@ import xm.chessboard.helper.KnightNextStepCalculatorHelper;
 import xm.chessboard.validator.ChessboardPositionValidator;
 import xm.chessboard.validator.TimesToIterateValidator;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
 
 public class ChessboardApplication {
@@ -41,7 +44,31 @@ public class ChessboardApplication {
             timesToIterate = scanner.nextInt();
         }
 
-        knightNextStepCalculatorHelper.calculateNextStepPositionsOfKnight(startingPosition)
+        printPositions(startingPosition, endingPosition, knightNextStepCalculatorHelper);
+    }
+
+    private static void printPositions(String startingPoint, String endingPosition, KnightNextStepCalculatorHelper helper) {
+        List<String> finalPathList = new ArrayList<>();
+        for (String chessboardPosition : helper.calculateNextStepPositionsOfKnight(startingPoint)) {
+            if (chessboardPosition.equals(endingPosition)) {
+                finalPathList.add(startingPoint + " -> " + chessboardPosition);
+            }
+
+            for (String chessboardPosition2 : helper.calculateNextStepPositionsOfKnight(chessboardPosition)) {
+                if (chessboardPosition2.equals(endingPosition)) {
+                    finalPathList.add(startingPoint + " -> " + chessboardPosition + " -> " + chessboardPosition2);
+                }
+
+                for (String chessboardPosition3 : helper.calculateNextStepPositionsOfKnight(chessboardPosition2)) {
+                    if (chessboardPosition3.equals(endingPosition)) {
+                        finalPathList.add(startingPoint + " -> " + chessboardPosition + " -> " + chessboardPosition2 + " -> " + chessboardPosition3);
+                    }
+                }
+            }
+        }
+
+        finalPathList.stream()
+                .sorted(Comparator.comparingInt(String::length))
                 .forEach(System.out::println);
     }
 }
