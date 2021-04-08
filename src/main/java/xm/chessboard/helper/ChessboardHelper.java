@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public class ChessboardHelper {
 
-    public Optional<CartesianPair> findCartesianPairFromPosition(String position) {
+    protected Optional<CartesianPair> findCartesianPairFromPosition(String position) {
         return EnumSet.allOf(Chessboard.class)
                 .stream()
                 .filter(chessboardPosition -> chessboardPosition.getPosition().equals(position))
@@ -16,7 +16,7 @@ public class ChessboardHelper {
                 .map(Chessboard::getCartesianPair);
     }
 
-    public Optional<String> findPositionFromCartesianPair(CartesianPair cartesianPair) {
+    protected Optional<String> findPositionFromCartesianPair(CartesianPair cartesianPair) {
         return EnumSet.allOf(Chessboard.class)
                 .stream()
                 .filter(chessboardPosition -> chessboardPosition.getCartesianPair().getI() == cartesianPair.getI() &&
