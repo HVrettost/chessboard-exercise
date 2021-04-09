@@ -40,3 +40,7 @@ START D4, D4 (3,3) (i, j)
 2) If one of the next steps is the ending position then add it in the path list 
 3) Make the above algorithm run in 3fold for loop
 ```
+# HOW TO RUN THE EXERCISE
+In the root folder of the project run
+- ./gradlew clean build
+- java -jar build/libs/XmChessboard-1.0-SNAPSHOT.jar
