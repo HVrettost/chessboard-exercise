@@ -14,24 +14,25 @@ public class KnightService {
     }
 
     public Set<String> calculateSolutionPaths(String startingPoint, String endingPosition) {
-        Set<String> paths = new HashSet<>();
-        for (String chessboardPosition : knightNextStepCalculatorHelper.calculateNextStepPositionsOfKnight(startingPoint)) {
+        final Set<String> paths = new HashSet<>();
+
+        knightNextStepCalculatorHelper.calculateNextStepPositionsOfKnight(startingPoint).forEach(chessboardPosition -> {
             if (chessboardPosition.equals(endingPosition)) {
                 paths.add(startingPoint + " -> " + chessboardPosition);
             }
 
-            for (String chessboardPosition2 : knightNextStepCalculatorHelper.calculateNextStepPositionsOfKnight(chessboardPosition)) {
+            knightNextStepCalculatorHelper.calculateNextStepPositionsOfKnight(chessboardPosition).forEach(chessboardPosition2 -> {
                 if (chessboardPosition2.equals(endingPosition)) {
                     paths.add(startingPoint + " -> " + chessboardPosition + " -> " + chessboardPosition2);
                 }
 
-                for (String chessboardPosition3 : knightNextStepCalculatorHelper.calculateNextStepPositionsOfKnight(chessboardPosition2)) {
+                knightNextStepCalculatorHelper.calculateNextStepPositionsOfKnight(chessboardPosition2).forEach(chessboardPosition3 -> {
                     if (chessboardPosition3.equals(endingPosition)) {
                         paths.add(startingPoint + " -> " + chessboardPosition + " -> " + chessboardPosition2 + " -> " + chessboardPosition3);
                     }
-                }
-            }
-        }
+                });
+            });
+        });
 
         return paths;
     }

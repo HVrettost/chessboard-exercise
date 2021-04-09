@@ -1,6 +1,5 @@
 package xm.chessboard.app;
 
-import xm.chessboard.helper.ChessboardHelper;
 import xm.chessboard.helper.KnightNextStepCalculatorHelper;
 import xm.chessboard.service.KnightService;
 import xm.chessboard.validator.ChessboardPositionValidator;
@@ -12,8 +11,7 @@ public class ChessboardApplication {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         ChessboardPositionValidator chessboardPositionValidator = new ChessboardPositionValidator();
-        ChessboardHelper chessboardHelper = new ChessboardHelper();
-        KnightNextStepCalculatorHelper knightNextStepCalculatorHelper = new KnightNextStepCalculatorHelper(chessboardHelper);
+        KnightNextStepCalculatorHelper knightNextStepCalculatorHelper = new KnightNextStepCalculatorHelper();
         KnightService chessboardKnightService = new KnightService(knightNextStepCalculatorHelper);
 
         System.out.println("Please enter a starting point for your knight to begin(acceptable values: (A1..A8),(B1..B8)...(H1..H8): ");

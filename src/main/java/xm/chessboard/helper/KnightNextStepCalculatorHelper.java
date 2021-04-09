@@ -7,23 +7,17 @@ import java.util.Set;
 
 public class KnightNextStepCalculatorHelper extends ChessboardHelper {
 
-    private final ChessboardHelper chessboardHelper;
-
-    public KnightNextStepCalculatorHelper(ChessboardHelper chessboardHelper) {
-        this.chessboardHelper = chessboardHelper;
-    }
-
     public Set<String> calculateNextStepPositionsOfKnight(String position) {
         Set<String> nextSteps = new HashSet<>();
-        CartesianPair cartesianPair = chessboardHelper.findCartesianPairFromPosition(position).orElseThrow();
-        chessboardHelper.findPositionFromCartesianPair(findIPlusOneJMinusTwo(cartesianPair)).ifPresent(nextSteps::add);
-        chessboardHelper.findPositionFromCartesianPair(findIPlusTwoJPlusOne(cartesianPair)).ifPresent(nextSteps::add);
-        chessboardHelper.findPositionFromCartesianPair(findIMinusTwoJPlusOne(cartesianPair)).ifPresent(nextSteps::add);
-        chessboardHelper.findPositionFromCartesianPair(findIMinusTwoJMinusOne(cartesianPair)).ifPresent(nextSteps::add);
-        chessboardHelper.findPositionFromCartesianPair(findIPlusOneJPlusTwo(cartesianPair)).ifPresent(nextSteps::add);
-        chessboardHelper.findPositionFromCartesianPair(findIMinusOneJPlusTwo(cartesianPair)).ifPresent(nextSteps::add);
-        chessboardHelper.findPositionFromCartesianPair(findIMinusOneJMinusTwo(cartesianPair)).ifPresent(nextSteps::add);
-        chessboardHelper.findPositionFromCartesianPair(findIPlusTwoJMinusOne(cartesianPair)).ifPresent(nextSteps::add);
+        CartesianPair cartesianPair = findCartesianPairFromPosition(position).orElseThrow();
+        findPositionFromCartesianPair(findIPlusOneJMinusTwo(cartesianPair)).ifPresent(nextSteps::add);
+        findPositionFromCartesianPair(findIPlusTwoJPlusOne(cartesianPair)).ifPresent(nextSteps::add);
+        findPositionFromCartesianPair(findIMinusTwoJPlusOne(cartesianPair)).ifPresent(nextSteps::add);
+        findPositionFromCartesianPair(findIMinusTwoJMinusOne(cartesianPair)).ifPresent(nextSteps::add);
+        findPositionFromCartesianPair(findIPlusOneJPlusTwo(cartesianPair)).ifPresent(nextSteps::add);
+        findPositionFromCartesianPair(findIMinusOneJPlusTwo(cartesianPair)).ifPresent(nextSteps::add);
+        findPositionFromCartesianPair(findIMinusOneJMinusTwo(cartesianPair)).ifPresent(nextSteps::add);
+        findPositionFromCartesianPair(findIPlusTwoJMinusOne(cartesianPair)).ifPresent(nextSteps::add);
 
         return nextSteps;
     }
