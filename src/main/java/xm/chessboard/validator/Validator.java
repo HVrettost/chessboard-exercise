@@ -2,5 +2,5 @@ package xm.chessboard.validator;
 
 public interface Validator<T> {
 
-    boolean isValid(T t);
+    boolean isValid(T value);
 }

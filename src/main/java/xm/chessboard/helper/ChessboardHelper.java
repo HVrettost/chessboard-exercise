@@ -6,7 +6,7 @@ import xm.chessboard.model.CartesianPair;
 import java.util.EnumSet;
 import java.util.Optional;
 
-public class ChessboardHelper {
+public abstract class ChessboardHelper {
 
     protected Optional<CartesianPair> findCartesianPairFromPosition(String position) {
         return EnumSet.allOf(Chessboard.class)

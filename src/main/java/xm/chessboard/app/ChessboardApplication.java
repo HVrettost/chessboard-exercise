@@ -14,23 +14,23 @@ public class ChessboardApplication {
         KnightNextStepCalculatorHelper knightNextStepCalculatorHelper = new KnightNextStepCalculatorHelper();
         KnightService chessboardKnightService = new KnightService(knightNextStepCalculatorHelper);
 
-        System.out.println("Please enter a starting point for your knight to begin(acceptable values: (A1..A8),(B1..B8)...(H1..H8): ");
+        System.out.println("Please enter a starting position for your knight to begin(acceptable values: (A1..A8),(B1..B8)...(H1..H8): ");
         String startingPosition = scanner.next();
 
         while (!chessboardPositionValidator.isValid(startingPosition)) {
-            System.out.println("Error: Please enter a starting point for your knight to begin(acceptable values: (A1..A8),(B1..B8)...(H1..H8): ");
+            System.out.println("Error: Please enter a starting position for your knight to begin(acceptable values: (A1..A8),(B1..B8)...(H1..H8): ");
             startingPosition = scanner.next();
         }
 
-        System.out.println("Please enter an ending point for your knight to finish(acceptable values: (A1..A8),(B1..B8)...(H1..H8): ");
+        System.out.println("Please enter an ending position for your knight to finish(acceptable values: (A1..A8),(B1..B8)...(H1..H8): ");
         String endingPosition = scanner.next();
 
         while (!chessboardPositionValidator.isValid(endingPosition)) {
-            System.out.println("Error: Please enter an ending point for your knight to finish(acceptable values: (A1..A8),(B1..B8)...(H1..H8): ");
+            System.out.println("Error: Please enter an ending position for your knight to finish(acceptable values: (A1..A8),(B1..B8)...(H1..H8): ");
             endingPosition = scanner.next();
         }
 
-        Set<String> paths = chessboardKnightService.calculateSolutionPaths(startingPosition, endingPosition);
+        Set<String> paths = chessboardKnightService.calculateSolutionPaths("D4", "H5");
 
         if (paths.size() == 0) {
             System.out.println("No solution has been found!");

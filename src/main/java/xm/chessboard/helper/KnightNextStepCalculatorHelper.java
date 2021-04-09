@@ -9,7 +9,8 @@ public class KnightNextStepCalculatorHelper extends ChessboardHelper {
 
     public Set<String> calculateNextStepPositionsOfKnight(String position) {
         Set<String> nextSteps = new HashSet<>();
-        CartesianPair cartesianPair = findCartesianPairFromPosition(position).orElseThrow();
+        CartesianPair cartesianPair = findCartesianPairFromPosition(position)
+                .orElseThrow(() -> new IllegalArgumentException("Chessboard position is not valid"));
         findPositionFromCartesianPair(findIPlusOneJMinusTwo(cartesianPair)).ifPresent(nextSteps::add);
         findPositionFromCartesianPair(findIPlusTwoJPlusOne(cartesianPair)).ifPresent(nextSteps::add);
         findPositionFromCartesianPair(findIMinusTwoJPlusOne(cartesianPair)).ifPresent(nextSteps::add);
