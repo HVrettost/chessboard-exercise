@@ -6,6 +6,9 @@ plugins {
 group 'xm.chessboard'
 version '1.0-SNAPSHOT'
 
+sourceCompatibility = JavaVersion.VERSION_14
+targetCompatibility = JavaVersion.VERSION_14
+
 repositories {
     mavenCentral()
 }
@@ -22,3 +25,7 @@ jar {
         attributes('Main-Class': 'xm.chessboard.app.ChessboardApplication')
     }
 }
+test {
+    useJUnitPlatform()
+}
+
